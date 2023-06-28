@@ -1,0 +1,17 @@
+/*Custom css properties*/
+
+:root
+{
+   --primary :#59516e;
+   --primary-var: #54416D;
+   --secondary: #2B235A;
+   --secondary-var:#31255A;
+
+}
+
+
+.box
+{
+    background-color: var(--primary);
+    height:100vh;
+}
