@@ -7,9 +7,49 @@
    --secondary: #2B235A;
    --secondary-var:#31255A;
    --tertiary-var: #555;
+   --white-ver1: hsla(0, 0%, 100%, 0.08);
+   --white-ver2: hsla(0, 0%, 100%, 0.04);
+   --outline: #3E3D40;
+   --on-surface-variant: #7B7980; 
+
+     /* font weight */
+    --weight-regular: 400;
+    --weight-semiBold: 600;
+
+   --shadow-1: 0px 1px 3px hsla(0, 0%, 0%, 0.5);
+
+   --transition-short: 100ms ease;
 
 }
 
+/*MATERIAL ICON*/
+@font-face {
+    font-family: 'Material Symbols Rounded';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/material-symbol-rounded.woff2) format('woff2');
+  }
+  
+
+.m-icon {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2.4rem;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    height: 1em;
+    width: 1em;
+    overflow: hidden;
+  }
+  
 
 
 
@@ -25,9 +65,25 @@
   box-sizing: border-box;
 }
 
+li { list-style: none; }
+
+a,
+img,
+span,
+input,
+button { display: block; }
+
 body{
     background: var(--primary);
     overflow: hidden;
+}
+
+input,
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit; /*inherits the parent element properties*/
 }
 
 button { cursor: pointer; }
@@ -49,12 +105,26 @@ button { cursor: pointer; }
 
 
 /*navbar*/
+.search-box,
+.header .btn-primary .span { display: none; }
 
-.header .navbar
+
+.header .navbar,
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header .navbar { justify-content: space-between; }
+
+.header-actions { gap: 16px; }
+
+.header .btn-primary { padding-inline: 12px; }
+
+.navbar .title
 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    font-size: 35px;
+    font-weight: bold;
 }
 
 .navbar
@@ -64,6 +134,62 @@ button { cursor: pointer; }
     padding: 16px;
     background-color:  var(--primary-var);
 }
+
+.has-state { position: relative; }
+
+.has-state:hover { box-shadow: var(--shadow-1); }
+
+.has-state:is(:focus, :focus-visible) { box-shadow: none; }
+
+.has-state::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  clip-path: circle(100% at 50% 50%);
+  transition: var(--transition-short);
+}
+
+.has-state:hover::before { background-color: var(--white-ver2); }
+
+.has-state:is(:focus, :focus-visible)::before {
+  background-color: var(--white-ver1);
+  animation: ripple 250ms ease forwards;
+}
+
+@keyframes ripple {
+    /*at 0% circle is too small to see*/
+    /*at 100% cicle the circle envelopes the whole screen*/
+    /*at 50% 50% means circle will start at center of the screen*/
+    0% { clip-path: circle(0% at 50% 50%); }
+    100% { clip-path: circle(100% at 50% 50%); }
+  }
+  
+.btn-primary {
+    background-color: var(--primary-var);
+    color: black;
+    height: 48px;
+    line-height: 48px;
+    max-width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-inline: 16px;
+    border-radius: 8px;
+  }
+
+.btn-primary .span { font-weight: var(--weight-semiBold); }
+
+.btn-primary[disabled] 
+{
+    background-color: var(--outline);
+    color: var(--on-surface-variant);
+    cursor: not-allowed;
+}
+  
+.btn-primary[disabled]::before { display: none; }
+
+
 
 .search-box{
     position: fixed;
@@ -85,16 +211,18 @@ button { cursor: pointer; }
     clip-path: circle(130% at 73% 5%);
 }
 
-.search-wrapper 
-{
-    position: relative;
-}
 
-.search-field 
+
+.icon-btn 
 {
-    height: 80px;
-    line-height: 80px;
-    padding-inline: 56px 16px;
-    outline: none;
-}
+    /*make btn background transparent*/
+    background-color: var(--white-ver1);
+    width: 48px;
+    height: 48px;
+    display: grid;
+    /*place arrow in center*/
+    place-items: center;
+    /*make circular border*/
+    border-radius: 50%;
+  }
   

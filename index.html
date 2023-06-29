@@ -15,6 +15,11 @@
     <!--Custom css file-->
     <link rel="stylesheet" href="./assets/css/style.css">
 
+    <!--Custom styling-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+
     <!--Script files-->
     <script></script>
    
@@ -24,13 +29,55 @@
   <body>
     <header>
       <div class="navbar">
+        
         <img src = "assets/images/cloudy_1163661.png" height = "60px" width = "60px">
-        <span>Weather</span>
-        </div>
+        <span class = "title">Weather</span>
+        
         <div class = "search-box active">
+
           <div class="search-wrapper">
-            <input id ="searchInput" placeholder="Search for a city..." class = "search-field" autocomplete = "off" />
+            <input id ="searchInput" placeholder="Search for a city..." 
+            class = "search-field" autocomplete = "off" search-field/>
+
+            <span class = "m-icon">search</span>
           </div>
+
+          <button class = "icon-btn has-state">
+            <span class="m-icon">arrow_back</span>
+          </button>
+
+          <div class = "search-result">
+            <ul class = "view-list">
+              <li class = "view-item">
+                <span class = "m-icon">location_on</span>
+  
+                <div>
+                  <p class = "item-title">Singapore</p>
+  
+                  <p class = "item-subtitle">North, Woodlands</p>
+                </div>
+              </li>
+            </ul>
+  
+  
+          </div>
+        </div>
+
+        <div class = "header-actions">
+
+          <button class = "icon-btn has-state" aria-label="open search">
+            <span class="m-icon">search</span>
+          </button>
+
+          <a href="#/current-location" class="btn-primary has-state" data-current-location-btn disabled>
+            
+            <span class="m-icon">my_location</span>
+           
+            <span class="span">Current Location</span>
+          </a>
+
+        </div>
+
       </div>
       
 
