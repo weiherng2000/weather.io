@@ -11,6 +11,7 @@
    --white-ver2: hsla(0, 0%, 100%, 0.04);
    --outline: #3E3D40;
    --on-surface-variant: #7B7980; 
+   --on-surface-variant-2: #B9B6BF;
 
      /* font weight */
     --weight-regular: 400;
@@ -107,11 +108,9 @@ button { cursor: pointer; }
 
 
 /*navbar*/
-.search-box,
 .header .btn-primary .span { display: none; }
 
 
-.header .navbar,
 .header-actions {
   display: flex;
   align-items: center;
@@ -232,5 +231,90 @@ button { cursor: pointer; }
     place-items: center;
     /*make circular border*/
     border-radius: 50%;
-  }
-  
+}
+
+/*create a grey line for the seacrch field*/
+.search-wrapper
+{
+  position:relative;
+  border-block-end: 1px solid var(--outline);
+}
+
+/*create a loading icon for the search*/
+.search-wrapper::before {
+  content: "";
+  position: absolute;
+  top:50%;
+  right:16px;
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--on-surface-variant);
+  border-block-start-color: transparent;
+  border-radius: 50%;
+  animation: loading 500ms linear infinite;
+  display:none;
+}
+
+@keyframes loading {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+/*when search-wrapper has searching we display it*/
+.search-wrapper:has(.searching)::before { display: block; }
+
+.search-field {
+  height: 80px;
+  line-height: 80px;
+  padding-inline: 56px 16px;
+  outline: none;
+}
+
+.search-field::placeholder { color: var(--on-surface-variant-2); }
+
+/*removes the x button in the input field*/
+.search-field::-webkit-search-cancel-button { display: none; }
+
+/*move the icons up to the search field*/
+.search-wrapper .leading-icon 
+{
+   position:absolute;
+   top:50%;
+   left:28px;
+   transform: translate(-50%, -50%);
+}
+
+/*> is a CSS combinator known as the child combinator. 
+It selects only the direct child elements of the preceding selector.*/
+.search-wrapper > .m-icon { display: none; }
+
+.search-wrapper .icon-btn {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/*Now for the search results*/
+.search-box .view-list { padding-block: 8px 16px; }
+
+.search-box .view-item {
+  position: relative;
+  height: 56px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  padding-inline: 16px 24px;
+}
+
+.search-box .view-item :is(.m-icon, .item-subtitle) {
+  color: var(black);
+}
+
+/*
+.search-box .view-item .item-link {
+  position: absolute;
+  inset: 0;
+  box-shadow: none;
+}
+*/
+
+
