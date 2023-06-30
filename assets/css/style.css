@@ -78,6 +78,8 @@ body{
     overflow: hidden;
 }
 
+img { height: auto; }
+
 input,
 button {
   background: none;
@@ -115,11 +117,17 @@ button { cursor: pointer; }
   align-items: center;
 }
 
-.header .navbar { justify-content: space-between; }
+.navbar{
+  display:flex;
+  justify-content: space-between;
+
+}
+
 
 .header-actions { gap: 16px; }
 
 .header .btn-primary { padding-inline: 12px; }
+
 
 .navbar .title
 {
