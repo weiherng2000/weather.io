@@ -14,6 +14,18 @@
    --on-surface-variant: #7B7980; 
    --on-surface-variant-2: #B9B6BF;
    --surface: #1D1C1F;
+   --black-alpha-10: hsla(0, 0%, 0%, 0.1);
+
+   --bg-aqi-1: #89E589;
+  --on-bg-aqi-1: #1F331F;
+  --bg-aqi-2: #E5DD89;
+  --on-bg-aqi-2: #33311F;
+  --bg-aqi-3: #E5C089;
+  --on-bg-aqi-3: #332B1F;
+  --bg-aqi-4: #E58989;
+  --on-bg-aqi-4: #331F1F;
+  --bg-aqi-5: #E589B7;
+  --on-bg-aqi-5: #331F29;
 
      /* font weight */
     --weight-regular: 400;
@@ -328,6 +340,11 @@ It selects only the direct child elements of the preceding selector.*/
 
 
 /*Now for common classes*/
+main {
+  height: calc(100vh - 80px);
+  height: calc(100svh - 80px); /* for mobile browser */
+  overflow: hidden;
+}
 .container
 {
     position: relative;
@@ -339,11 +356,24 @@ It selects only the direct child elements of the preceding selector.*/
     margin-inline: auto;
     padding: 16px;
     grid-template-columns: minmax(0, 1fr);
+    overflow-y: overlay;
+}
+
+
+article.container::-webkit-scrollbar-thumb { background-color: transparent; }
+
+article.container:is(:hover, :focus-within)::-webkit-scrollbar-thumb {
+  background-color: var(--white-alpha-8);
 }
 
 .card{
   background-color: var(--surface);
   color: var(--on-surface);
+}
+
+.card-sm {
+  border-radius: 16px;
+  padding: 16px;
 }
 
 .card-lg {
@@ -424,4 +454,80 @@ last child within their parent element
 */
 .forecast-card .card-item:not(:last-child) { margin-block-end: 12px; }
 
+/*HIGHLIGHTS for the weather*/
+.highlight-list 
+{
+  display: grid;
+  gap: 20px;
+}
 
+.highlights-list .title-3 {
+  color: var(--on-surface-variant);
+  margin-block-end: 20px;
+}
+
+.highlights .card-sm {
+  background-color: var(--black-alpha-10);
+  position: relative;
+}
+
+
+.highlight-card :is(.wrapper, .card-list, .card-item) {
+  display: flex;
+  align-items: center;
+}
+
+.highlight-card .wrapper {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.highlight-card .card-list {
+  flex-wrap: wrap; /*defines that flex item will not be confined to one row only*/
+  flex-grow: 1; /*determines how much space to allocate to the flex item*/
+  row-gap: 8px;
+  flex-flow: column wrap 3;
+}
+
+.highlight-card .card-item {
+  width: 40%;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.highlight-card .label-1 { color: var(--on-surface-variant); }
+
+.badge {
+  position: absolute; /*positioned absolute based on the parent element card lg*/
+  top: 16px;
+  right: 16px;
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-weight: var(--weight-semiBold);
+  cursor: help;
+}
+
+.badge.aqi-1 {
+  background-color: var(--bg-aqi-1);
+  color: var(--on-bg-aqi-1);
+}
+
+.badge.aqi-2 {
+  background-color: var(--bg-aqi-2);
+  color: var(--on-bg-aqi-2);
+}
+
+.badge.aqi-3 {
+  background-color: var(--bg-aqi-3);
+  color: var(--on-bg-aqi-3);
+}
+
+.badge.aqi-4 {
+  background-color: var(--bg-aqi-4);
+  color: var(--on-bg-aqi-4);
+}
+
+.badge.aqi-5 {
+  background-color: var(--bg-aqi-5);
+  color: var(--on-bg-aqi-5);
+}
