@@ -10,12 +10,18 @@
    --white-ver1: hsla(0, 0%, 100%, 0.08);
    --white-ver2: hsla(0, 0%, 100%, 0.04);
    --outline: #3E3D40;
+   --on-surface:#DDDAE5;
    --on-surface-variant: #7B7980; 
    --on-surface-variant-2: #B9B6BF;
+   --surface: #1D1C1F;
 
      /* font weight */
     --weight-regular: 400;
     --weight-semiBold: 600;
+
+    --title-1: 2rem;
+    --title-2: 1.8rem;
+    --title-3: 1.6rem;
 
    --shadow-1: 0px 1px 3px hsla(0, 0%, 0%, 0.5);
 
@@ -75,7 +81,7 @@ input,
 button { display: block; }
 
 body{
-    background: var(--primary);
+    background:#151617 ;
     overflow: hidden;
 }
 
@@ -139,7 +145,7 @@ button { cursor: pointer; }
     width:100%;
     margin-inline: auto;
     padding: 16px;
-    background-color:  var(--primary-var);
+    background-color:  #090A0A;
 }
 
 .has-state { position: relative; }
@@ -204,10 +210,11 @@ button { cursor: pointer; }
     left:0;
     width:100%;
     height:100%;
+    height: 100svh; /* for mobile browser */
     opacity: 0;
     visibility: hidden;
     z-index: 4;
-    background-color: var(--primary-var);
+    background-color: #151516;
     clip-path: circle(4% at calc(100% - 102px) 5%);
 
 }
@@ -304,9 +311,11 @@ It selects only the direct child elements of the preceding selector.*/
   gap: 16px;
   padding-inline: 16px 24px;
 }
-
+.search-box .item-title{
+  color:white;
+}
 .search-box .view-item :is(.m-icon, .item-subtitle) {
-  color: var(black);
+  color: var(--on-surface-variant);
 }
 
 /*
@@ -316,5 +325,103 @@ It selects only the direct child elements of the preceding selector.*/
   box-shadow: none;
 }
 */
+
+
+/*Now for common classes*/
+.container
+{
+    position: relative;
+    display: grid;
+    gap: 20px;
+    height: 100%;
+    max-width: 1600px;
+    width: 100%;
+    margin-inline: auto;
+    padding: 16px;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.card{
+  background-color: var(--surface);
+  color: var(--on-surface);
+}
+
+.card-lg {
+  border-radius: 28px;
+  padding: 20px;
+}
+
+.title-1 { font-size: var(--title-1); }
+
+.title-2 {
+  font-size: var(--title-2);
+  margin-block-end: 12px;
+}
+
+.title-3 {
+  font-size: var(--title-3);
+  font-weight: var(--weight-semiBold);
+}
+
+.heading {
+  color: white;
+  font-size: 5.6rem;
+  line-height: 1.1;
+}
+
+
+
+
+/*Current weather*/
+.current-weather-card .wrapper{
+  margin-block: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+}
+
+.current-weather-card .weather-icon {
+  margin-inline: auto;
+}
+
+.current-weather-card .meta-list {
+  margin-block-start: 16px;
+  padding-block-start: 16px;
+  border-block-start: 1px solid var(--outline);
+}
+
+.current-weather-card .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/*5 days forecast*/
+.forecast .title-2{
+  color:white;
+  margin-block-end: 14px;
+  padding-left:10px;
+}
+
+.forecast-card :is(.card-item, .icon-wrapper) {
+  display: flex;
+  align-items: center;
+}
+
+.forecast-card .icon-wrapper { gap: 8px; }
+
+.forecast-card .card-item > .label-1 {
+  width: 100%;/*increases the width of the label elements*/
+  text-align: right;/*shift the words in the element to the right*/
+}
+
+/*The CSS code you provided targets elements 
+with the class "card-item" that are not the 
+last child within their parent element
+ with the class "forecast-card". 
+ It applies a margin of 12 pixels at the bottom of these elements.
+*/
+.forecast-card .card-item:not(:last-child) { margin-block-end: 12px; }
 
 
