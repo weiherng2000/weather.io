@@ -469,6 +469,7 @@ last child within their parent element
 .highlights .card-sm {
   background-color: var(--black-alpha-10);
   position: relative;
+  margin-block-end: 16px;
 }
 
 
@@ -486,11 +487,10 @@ last child within their parent element
   flex-wrap: wrap; /*defines that flex item will not be confined to one row only*/
   flex-grow: 1; /*determines how much space to allocate to the flex item*/
   row-gap: 8px;
-  flex-flow: column wrap 3;
 }
 
 .highlight-card .card-item {
-  width: 40%;
+  width: 50%;
   gap: 4px;
   justify-content: flex-end;
 }
@@ -530,4 +530,43 @@ last child within their parent element
 .badge.aqi-5 {
   background-color: var(--bg-aqi-5);
   color: var(--on-bg-aqi-5);
+}
+
+.highlight-card.two .card-item {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.hourly-forecast .title-2
+{
+   color:white;
+}
+
+.slider-container {
+  overflow-x: auto;
+  margin-inline: -16px;
+}
+
+.slider-container::-webkit-scrollbar { display: none; }
+
+.slider-list:first-child {
+  margin-block-end: 16px;
+}
+
+.slider-list {
+  display: flex;
+  gap: 12px;
+}
+
+.slider-item {
+  min-width: 110px;
+  flex: 1 1 100%; /*make the flex item grow across the screen*/
+}
+
+.slider-card { text-align: center; }
+
+.slider-item .weather-icon {
+  margin-inline: auto; /*lines the image to the elements*/
+  margin-block: 12px; /*stretches the slider card vertcially*/
 }
