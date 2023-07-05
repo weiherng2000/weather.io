@@ -666,9 +666,22 @@ last child within their parent element
     margin-block-end: 16px;
   }
 
-  .highlights-list { grid-template-columns: 1fr 1fr; }
+  .highlights-list { grid-template-columns: 1fr 1fr;
+    /*make 2 equal columns of grid*/
+  }
 
-  .highlights .m-icon { font-size: 3.6rem; }
+  .highlight-card:nth-child(-n+2)
+  {
+    /*make the first and 2nd child of highlight list have 2 column of space*/
+      grid-column:span 2;
+      height: 240px;
+  }
+  .highlight-card:nth-child(n+3) /*from 3rd child onwards*/
+  {
+      height:160px;
+  }
+
+  .highlights .m-icon { font-size: 3rem; }
 
   .highlight-card.one .card-item {
     width: 25%;
@@ -795,11 +808,14 @@ last child within their parent element
   .forecast-card .title-2 { --title-2: 2.2rem; }
 
   .highlight-card .m-icon { font-size: 3.8rem; }
-  
-  .highlights-list
+
+  .highlight-card:nth-child(-n+2)
   {
-    grid-template-columns: 1000px 1fr;
+    /*make the first and 2nd child of highlight list have 2 column of space*/
+      height: 300px;
   }
+  
+  
 
 
   .slider-list { gap: 16px; }
