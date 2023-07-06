@@ -237,6 +237,10 @@ button { cursor: pointer; }
     clip-path: circle(130% at 73% 5%);
 }
 
+.search-box input{
+  color:white;
+}
+
 
 
 .icon-btn 
@@ -252,7 +256,7 @@ button { cursor: pointer; }
     border-radius: 50%;
 }
 
-/*create a grey line for the seacrch field*/
+/*create a grey line for the seacch field*/
 .search-wrapper
 {
   position:relative;
@@ -278,7 +282,7 @@ button { cursor: pointer; }
   0% { transform: translateY(-50%) rotate(0deg); }
   100% { transform: translateY(-50%) rotate(360deg); }
 }
-/*when search-wrapper has searching we display it*/
+/*when search-wrapper class has searching we display it*/
 .search-wrapper:has(.searching)::before { display: block; }
 
 .search-field {
@@ -314,6 +318,7 @@ It selects only the direct child elements of the preceding selector.*/
 /*Now for the search results*/
 .search-box .view-list { padding-block: 8px 16px; }
 
+
 .search-box .view-item {
   position: relative;
   height: 56px;
@@ -330,13 +335,15 @@ It selects only the direct child elements of the preceding selector.*/
   color: var(--on-surface-variant);
 }
 
-/*
+.search-box .view-list::-webkit-scrollbar-button { height: 20px; }
+
+
 .search-box .view-item .item-link {
   position: absolute;
   inset: 0;
   box-shadow: none;
 }
-*/
+
 
 
 /*Now for common classes*/

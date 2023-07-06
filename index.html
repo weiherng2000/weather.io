@@ -32,67 +32,31 @@
       <div class="navbar">
 
         <img  src = "assets/images/cloudy_1163661.png" width="60" height="58" alt="logo">
-        <div class = "search-box">
+
+        <div class = "search-box" data-search-box>
 
           <div class="search-wrapper">
             <input id ="searchInput" placeholder="Search for a city..." 
-            class = "search-field" autocomplete = "off" search-field/>
+            class = "search-field " autocomplete = "off" data-search-field/>
 
             <span class = "m-icon leading-icon">search</span>
 
-            <button class = "icon-btn leading-icon has-state">
+            <button class = "icon-btn leading-icon has-state" data-search-toggler>
               <span class="m-icon">arrow_back</span>
             </button>
             
           </div>
 
 
-          <div class = "search-result active">
-            <ul class = "view-list">
-              <li class = "view-item">
-                <span class = "m-icon">location_on</span>
-  
-                <div>
-                  <p class = "item-title">Singapore</p>
-  
-                  <p class = "item-subtitle">North, Woodlands</p>
-                </div>
-              </li>
-              <li class = "view-item">
-                <span class = "m-icon">location_on</span>
-  
-                <div>
-                  <p class = "item-title">Singapore</p>
-  
-                  <p class = "item-subtitle">North, Woodlands</p>
-                </div>
-              </li>
-              <li class = "view-item">
-                <span class = "m-icon">location_on</span>
-  
-                <div>
-                  <p class = "item-title">Singapore</p>
-  
-                  <p class = "item-subtitle">North, Woodlands</p>
-                </div>
-              </li>
-               <li class = "view-item">
-                <span class = "m-icon">location_on</span>
-  
-                <div>
-                  <p class = "item-title">Singapore</p>
-  
-                  <p class = "item-subtitle">North, Woodlands</p>
-                </div>
-              </li>
-            </ul>
+          <div class = "search-result active" data-search-result>
   
           </div>
+
         </div>
 
         <div class = "header-actions">
 
-          <button class = "icon-btn has-state" aria-label="open search">
+          <button class = "icon-btn has-state" aria-label="open search" data-search-toggler>
             <span class="m-icon">search</span>
           </button>
 
