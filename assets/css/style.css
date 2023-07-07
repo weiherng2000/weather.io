@@ -99,6 +99,10 @@ body{
 
 img { height: auto; }
 
+input{
+  width:100%; /*for the input search field to match the search box width*/
+}
+
 input,
 button {
   background: none;
@@ -604,6 +608,26 @@ last child within their parent element
   animation: loading 500ms linear infinite;
 }
 
+/*-----------------------------------*\
+  #ERROR SECTION
+\*-----------------------------------*/
+
+.error-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh; /* for mobile browser */
+  background-color: var(--background);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  z-index: 8;
+}
+
+.error-content .btn-primary { margin-block-start: 20px; }
 /*MEDIA QUERIES*/
 /**
  * responsive for large than 768px screen
@@ -730,22 +754,18 @@ last child within their parent element
    
    .header {
     position: relative;
-    height: 120px;
+    height: 140px;
     z-index: 4;
   }
-
-  .header .container {
-    padding-block: 0;
-    height: 100%;
-  }
-
+  
   .search-box,
-  .search-box.active {
-    all: unset;
-    display: block;
-    position: relative;
-    width: 400px;
-    animation: none;
+  .search-box.active
+  {
+    all:unset;
+    display:block;
+    position:relative;
+    width:500px;
+    animation:none;
   }
 
   .search-wrapper { border-block-end: none; }
@@ -753,7 +773,7 @@ last child within their parent element
   .search-wrapper > .m-icon { display: block; }
 
   .search-field,
-  .search-view .view-list { background-color: var(--surface); }
+  .search-box .view-list { background-color: var(--surface); }
 
   .search-field {
     height: 56px;
@@ -761,40 +781,36 @@ last child within their parent element
   }
 
   .search-result,
-  .search-view:not(:focus-within) .search-result { display: none; }
+  .search-box:not(:focus-within) .search-result { display: none; }
 
-  .search-view:focus-within .search-result.active { display: block; }
-
-  .search-view:has(.search-result.active):focus-within .search-field {
+  .search-box:focus-within .search-result.active { display: block; }
+  
+  .search-box:has(.search-result.active):focus-within .search-field {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-
-  .search-view .view-list {
-    position: absolute;
+   
+  /*displays the search results below the search field*/
+  .search-box .view-list {
+    position: absolute; /*ensures that the view list will not drag the header*/
     top: 100%;
     left: 0;
-    width: 100%;
+    width: 100%; /*match the view list and search field width*/
     max-height: 360px;
-    border-radius: 0 0 var(--radius-28) var(--radius-28);
+    border-radius: 0px 0px 28px 28px;
     border-block-start: 1px solid var(--outline);
     overflow-y: auto; /* for firefox */
     overflow-y: overlay;
   }
-  
 
-  .search-view .view-list:empty { min-height: 120px; }
 
-  .search-view .view-list::-webkit-scrollbar-button { height: 20px; }
+  .search-box .view-list::-webkit-scrollbar-button { height: 20px; }
 
-  .search-view:is(:hover, :has(.view-list):hover) {
-    filter: drop-shadow(var(--shadow-1));
+   
   }
 
-  .search-view:is(:focus-within, :has(.view-list):focus-within) {
-    filter: drop-shadow(var(--shadow-2));
-  }
-  
+ 
+
 
     /**
    * MAIN
@@ -832,7 +848,7 @@ last child within their parent element
    
 
 
- }
+ 
 
  @media (min-width: 1400px) {
 
