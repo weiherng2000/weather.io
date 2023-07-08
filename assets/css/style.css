@@ -15,6 +15,7 @@
    --on-surface-variant-2: #B9B6BF;
    --surface: #1D1C1F;
    --black-alpha-10: hsla(0, 0%, 0%, 0.1);
+   --on-background: #EAE6F2;
 
    --bg-aqi-1: #89E589;
   --on-bg-aqi-1: #1F331F;
@@ -38,6 +39,8 @@
    --shadow-1: 0px 1px 3px hsla(0, 0%, 0%, 0.5);
 
    --transition-short: 100ms ease;
+
+   --radius-circle: 50%;
 
 }
 
@@ -356,19 +359,17 @@ main {
   height: calc(100svh - 80px); /* for mobile browser */
   overflow: hidden;
 }
-.container
+article.container
 {
-    position: relative;
-    display: grid;
-    gap: 20px;
-    height: 100%;
-    max-width: 1600px;
-    width: 100%;
-    margin-inline: auto;
-    padding: 16px;
-    grid-template-columns: minmax(0, 1fr);
-    overflow-y: overlay;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  height: 100%;
+  overflow-y: auto; /* for firefox */
+  overflow-y: overlay;
 }
+
 
 
 article.container::-webkit-scrollbar-thumb { background-color: transparent; }
@@ -587,26 +588,27 @@ last child within their parent element
 \*-----------------------------------*/
 
 .loading {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
   height: 100%;
-  background-color: var(--background);
-  place-items: center;
-  z-index: 1;
-  display: none;
+  background-color:#151617 ;
+  display:none;
+  place-items:center;
+  z-index:1;
 }
 
-.loading::before {
+.loading::before{
   content: "";
-  width: 48px;
-  height: 48px;
+  width:48px;
+  height:48px;
   border: 4px solid var(--on-background);
-  border-block-start-color: transparent;
+  border-block-start-color:transparent;
   border-radius: var(--radius-circle);
   animation: loading 500ms linear infinite;
 }
+
 
 /*-----------------------------------*\
   #ERROR SECTION
@@ -806,12 +808,6 @@ last child within their parent element
 
   .search-box .view-list::-webkit-scrollbar-button { height: 20px; }
 
-   
-  }
-
- 
-
-
     /**
    * MAIN
    */
@@ -842,6 +838,14 @@ last child within their parent element
 
 
   .slider-list { gap: 16px; }
+
+   
+  }
+
+ 
+
+
+  
 
    
  

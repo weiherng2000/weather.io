@@ -6,7 +6,7 @@ const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474" // London
 
 
 
-const currentWeather = function()
+const currentLocation = function()
 {
     /*window.navigator object contains information about the visitor's browser.*/
     /*The Geolocation object allows the user to provide their location to web applications.*/
@@ -32,16 +32,15 @@ const currentWeather = function()
 /*we then pass in those substrings as arguments for the update weather function*/
 /*... is used to spread the object/iterable into individual elements*/
 
-const searchedlocation = query => updateWeather(...query.split('&'));
+const searchedLocation = query => updateWeather(...query.split('&'));
 
 
 /*This means that when the URL "/" is accessed, 
 the function referenced by currentWeather 
 will be returned, but not executed.*/
 const routes = new Map([
-  ["/current-location", ()=>currentWeather],
-  ["/weather",()=>searchedlocation]
-
+  ["/current-location", currentLocation],
+  ["/weather", searchedLocation]
 ]);
 
 const checkHash = function()
