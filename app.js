@@ -279,6 +279,7 @@ export const updateWeather = function(lat,lon)
                           <div>
                             <p class = "label-1">Sunrise</p>
 
+
                             <p class = "title-1">${module.getTime(sunriseUnixUTC, timezone)}</p>
 
                           </div>
